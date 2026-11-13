@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dp7d3gns2mo8d"]
+
+[ext_resource type="Texture2D" uid="uid://doxi5kbdr1faf" path="res://Assets/sprite.png" id="1_1bvp3"]
+[ext_resource type="FontFile" uid="uid://cdqrbkw4pprjg" path="res://Assets/ComicoroRu_0.ttf" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://d0d7xm8b4qnnv" path="res://main.gd" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bg2n2gfql6578" path="res://Assets/icon.svg" id="4_272bh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6raq"]
+atlas = ExtResource("1_1bvp3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xv4sj"]
+texture = SubResource("AtlasTexture_p6raq")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_vu703"]
+default_font = ExtResource("2_lquwl")
+Button/styles/normal = SubResource("StyleBoxTexture_xv4sj")
+
+[node name="Main" type="Control" unique_id=1533390367 node_paths=PackedStringArray("name_label", "job_label", "background", "avatar")]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vu703")
+script = ExtResource("3_7mycd")
+name_label = NodePath("MarginContainer/VBoxContainer/Label")
+job_label = NodePath("MarginContainer/VBoxContainer/Label2")
+background = NodePath("Фон")
+avatar = NodePath("MarginContainer/VBoxContainer/TextureRect")
+
+[node name="Фон" type="ColorRect" parent="." unique_id=1749114456]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.006
+offset_right = 2.0
+offset_bottom = 0.11199951
+color = Color(0.7385088, 0.5301541, 0.3796089, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=975210021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=541303422]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=274081295]
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_272bh")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=533864749]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Godot"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=811498677]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "2 label"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1430824776]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2013574842]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Кнопка1"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=697413967]
+layout_mode = 2
+text = "Кнопка2"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
